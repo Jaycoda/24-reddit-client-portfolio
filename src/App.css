@@ -80,3 +80,11 @@ button {
   border-radius: 4px;
   max-width: 800px;
 }
+
+.post img {
+  width: 70%;
+  margin: 10px auto;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  box-shadow: 10px 10px 5px #ccc;
+}

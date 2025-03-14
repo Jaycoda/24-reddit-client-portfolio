@@ -1,12 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setQuery } from "../store/redditSlice";
 
 export const SearchBar = () => {
   const [search, setSearch] = useState("");
 
+  const dispatch = useDispatch();
+
   const handleSearch = (e) => {
     e.preventDefault();
     // Add search logic here
-    console.log(search.trim().toLowerCase());
+    const searchTerm = search.trim().toLowerCase(); // get the search term
+    dispatch(setQuery(searchTerm)); // dispatch the search term
     setSearch("");
   };
 

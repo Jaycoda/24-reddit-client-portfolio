@@ -3,7 +3,7 @@ export const posts = [
   {
     subreddit_id: "t5_2qh8b",
     link_title:
-      "How do I learn to be grateful and stop comparing myself to others?",
+      "How do I learn to be good and stop comparing myself to others?",
     ups: 2,
     subreddit: "malaysia",
     link_author: "[deleted]",
@@ -27,8 +27,8 @@ export const posts = [
       "https://www.reddit.com/r/malaysia/comments/1i7xd04/how_do_i_learn_to_be_grateful_and_stop_comparing/",
     name: "t1_m8owhrb",
     subreddit_name_prefixed: "r/malaysia",
-    created: 1737619196.0,
-    created_utc: 1737619196.0,
+    created: 1731475200.0,
+    created_utc: 1731475200.0,
     link_url:
       "https://www.reddit.com/r/malaysia/comments/1i7xd04/how_do_i_learn_to_be_grateful_and_stop_comparing/",
   },
