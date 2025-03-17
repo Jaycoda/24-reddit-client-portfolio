@@ -1,5 +1,6 @@
 import React from "react";
-import { convertUTCToDate } from "../utils/dateFormat";
+import { Link, useNavigate } from "react-router-dom";
+
 import { pastTimeFormat } from "../utils/pastTimeFormat";
 
 export const RedditPost = (props) => {
@@ -8,9 +9,15 @@ export const RedditPost = (props) => {
 
   return (
     <div className="post" key={post.id}>
-      <h2>{post.title}</h2>
-      {post.url_overridden_by_dest.includes("jpeg") ? (
-        <img src={post.url_overridden_by_dest} alt={post.title} />
+      <h2>
+        <Link to={`/post/${post.id}`}>{post?.title}</Link>
+      </h2>
+      {post.url_overridden_by_dest?.includes("jpeg") ||
+      post.url_overridden_by_dest?.includes("png") ? (
+        <img
+          src={post.url_overridden_by_dest}
+          alt={post?.title || "No Title"}
+        />
       ) : (
         <p>Image not available</p>
       )}

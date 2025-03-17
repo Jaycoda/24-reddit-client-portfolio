@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../App.css";
 import { useDispatch } from "react-redux";
 import { setQuery } from "../store/redditSlice";
 
@@ -23,7 +24,9 @@ export const SearchBar = () => {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-      <button type="submit">Search</button>
+      <button className="search-button" type="submit">
+        Search
+      </button>
     </form>
   );
 };

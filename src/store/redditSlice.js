@@ -7,12 +7,13 @@ const initialState = {
   status: "idle",
   error: null,
   query: null, // update the search query
+  comments: {},
 };
 
 // Async thunk to fetch Reddit data based on category
 export const fetchRedditData = createAsyncThunk(
   "reddit/fetchRedditData",
-  async (category = "popular") => {
+  async (category) => {
     try {
       const response = await fetch(
         `https://www.reddit.com/r/${category}.json?limit=10`
@@ -22,6 +23,26 @@ export const fetchRedditData = createAsyncThunk(
       }
       const data = await response.json();
       return data.data.children.map((post) => post.data);
+    } catch (error) {
+      console.error(error);
+      throw error;
+    }
+  }
+);
+
+// Async thunk to fetch comments for a post
+export const fetchPostComments = createAsyncThunk(
+  "reddit/fetchPostComments",
+  async (postId) => {
+    try {
+      const response = await fetch(
+        `https://www.reddit.com/comments/${postId}.json`
+      );
+      if (!response.ok) {
+        throw new Error("Failed to fetch comments");
+      }
+      const data = await response.json();
+      return data[1].data.children.map((comment) => comment.data);
     } catch (error) {
       console.error(error);
       throw error;

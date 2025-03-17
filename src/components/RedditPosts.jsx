@@ -32,14 +32,19 @@ export const RedditPosts = () => {
   );
 
   // Use the memoized selector
-  const { posts, status, query: searchTerm } = useSelector(selectRedditState);
+  const { posts, status, query } = useSelector(selectRedditState);
+
+  const searchTerm = query; // Rename query to searchTerm for clarity
+  console.log("test term" + searchTerm);
 
   const dispatch = useDispatch(); //dispatch function to dispatch actions
 
   useEffect(() => {
     //fetch the Reddit data when the component mounts
-    dispatch(fetchRedditData("creepy"));
-  }, [dispatch]);
+    if (status === "idle") {
+      dispatch(fetchRedditData("popular"));
+    }
+  }, [status, dispatch]);
 
   // Conditional logging to avoid logging empty arrays
   useEffect(() => {
@@ -50,9 +55,7 @@ export const RedditPosts = () => {
 
   // Filter the posts based on the search term
   const filteredPosts = posts.filter((post) =>
-    searchTerm
-      ? post.title.toLowerCase().split(" ").includes(searchTerm.toLowerCase())
-      : true
+    searchTerm ? post.title.toLowerCase().split(" ").includes(searchTerm) : true
   );
 
   return (
@@ -63,8 +66,7 @@ export const RedditPosts = () => {
       {status === "succeeded" &&
         (posts.length === 0 ? (
           <p>No posts available</p>
-        ) : // Display a message if no posts are found
-        filteredPosts.length > 0 ? (
+        ) : filteredPosts.length > 0 ? (
           filteredPosts.map((post) => <RedditPost key={post.id} post={post} />)
         ) : (
           <p>No posts found</p>
