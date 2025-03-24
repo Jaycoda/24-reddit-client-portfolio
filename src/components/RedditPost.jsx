@@ -1,22 +1,24 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { pastTimeFormat } from "../utils/pastTimeFormat";
+import { pastTimeFormat } from '../utils/pastTimeFormat';
 
 export const RedditPost = (props) => {
   //destructure the post object from the props
   const { post } = props;
 
   return (
-    <div className="post" key={post.id}>
+    <div className='post' key={post.id}>
       <h2>
-        <Link to={`/post/${post.id}`}>{post?.title}</Link>
+        <Link to={`/post/${post.id}`} state={{ detailPost: post }}>
+          {post?.title}
+        </Link>
       </h2>
-      {post.url_overridden_by_dest?.includes("jpeg") ||
-      post.url_overridden_by_dest?.includes("png") ? (
+      {post.url_overridden_by_dest?.includes('jpeg') ||
+      post.url_overridden_by_dest?.includes('png') ? (
         <img
           src={post.url_overridden_by_dest}
-          alt={post?.title || "No Title"}
+          alt={post?.title || 'No Title'}
         />
       ) : (
         <p>Image not available</p>
