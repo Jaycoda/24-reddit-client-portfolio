@@ -1,10 +1,10 @@
-import { subreddits } from "../data/subreddits";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchRedditData, setQuery } from "../store/redditSlice";
-import { useLocation, useNavigate } from "react-router-dom";
+import { subreddits } from '../data/subreddits';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRedditData, setQuery } from '../store/redditSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-import React from "react";
-import { SubReddit } from "./SubReddit";
+import React from 'react';
+import { SubReddit } from './SubReddit';
 
 export const SubReddits = () => {
   const query = useSelector((state) => state.reddit.query);
@@ -13,8 +13,8 @@ export const SubReddits = () => {
   const navigate = useNavigate();
 
   const handleSubRedditClick = (subreddit) => {
-    if (location.pathname !== "/") {
-      navigate("/"); // Navigate to the root URL
+    if (location.pathname !== '/') {
+      navigate('/'); // Navigate to the root URL
     }
     // Set the search query to the null when a subreddit is clicked
     if (query !== null) {
@@ -25,7 +25,7 @@ export const SubReddits = () => {
   };
 
   return (
-    <div className="subreddits">
+    <div className='subreddits'>
       {subreddits.map((subreddit) => (
         <SubReddit
           key={subreddit.id}

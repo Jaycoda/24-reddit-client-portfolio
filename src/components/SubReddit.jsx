@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react';
 
 export const SubReddit = (props) => {
   return (
-    <div className="subreddit">
+    <div className='subreddit'>
       <button
         onClick={() => props.handleSubRedditClick(props.subreddit.display_name)}
-        key={props.subreddit.id}
-      >
+        key={props.subreddit.id}>
         {props.subreddit.display_name}
       </button>
     </div>

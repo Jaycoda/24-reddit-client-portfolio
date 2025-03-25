@@ -1,20 +1,22 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchRedditData } from "../store/redditSlice";
-import { RedditPost } from "./RedditPost";
-import { createSelector } from "reselect";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRedditData } from '../store/redditSlice';
+import { RedditPost } from './RedditPost';
+import { createSelector } from 'reselect';
 
 export const RedditPosts = () => {
   // Retrieve multiple state properties in a single selector
-  // const {
-  //   posts,
-  //   status,
-  //   query: searchTerm,
-  // } = useSelector((state) => ({
-  //   posts: state.reddit.posts,
-  //   status: state.reddit.status,
-  //   query: state.reddit.query,
-  // }));
+  /*
+  const {
+    posts,
+    status,
+    query: searchTerm,
+  } = useSelector((state) => ({
+    posts: state.reddit.posts,
+    status: state.reddit.status,
+    query: state.reddit.query,
+  }));
+  */
 
   // Input selectors
   const selectPosts = (state) => state.reddit.posts;
@@ -34,15 +36,16 @@ export const RedditPosts = () => {
   // Use the memoized selector
   const { posts, status, query } = useSelector(selectRedditState);
 
-  const searchTerm = query; // Rename query to searchTerm for clarity
-  console.log("test term" + searchTerm);
+  // Rename query to searchTerm for clarity
+  const searchTerm = query;
 
-  const dispatch = useDispatch(); //dispatch function to dispatch actions
+  //dispatch function to dispatch actions
+  const dispatch = useDispatch();
 
   useEffect(() => {
     //fetch the Reddit data when the component mounts
-    if (status === "idle") {
-      dispatch(fetchRedditData("popular"));
+    if (status === 'idle') {
+      dispatch(fetchRedditData('popular'));
     }
   }, [status, dispatch]);
 
@@ -55,15 +58,15 @@ export const RedditPosts = () => {
 
   // Filter the posts based on the search term
   const filteredPosts = posts.filter((post) =>
-    searchTerm ? post.title.toLowerCase().split(" ").includes(searchTerm) : true
+    searchTerm ? post.title.toLowerCase().split(' ').includes(searchTerm) : true
   );
 
   return (
     <div>
       <h1>Reddit Posts</h1>
-      {status === "loading" && <p>Loading...</p>}
-      {status === "failed" && <p>Failed</p>}
-      {status === "succeeded" &&
+      {status === 'loading' && <p>Loading...</p>}
+      {status === 'failed' && <p>Failed</p>}
+      {status === 'succeeded' &&
         (posts.length === 0 ? (
           <p>No posts available</p>
         ) : filteredPosts.length > 0 ? (
