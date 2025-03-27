@@ -12,16 +12,18 @@ export const SubReddits = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleSubRedditClick = (subreddit) => {
+  const handleSubRedditClick = (category) => {
+    // Only navigate when not already at root
     if (location.pathname !== '/') {
-      navigate('/'); // Navigate to the root URL
+      navigate('/'); // Navigate to root if necessary
     }
+
     // Set the search query to the null when a subreddit is clicked
     if (query !== null) {
       dispatch(setQuery(null));
     }
 
-    dispatch(fetchRedditData(subreddit));
+    dispatch(fetchRedditData(category));
   };
 
   return (

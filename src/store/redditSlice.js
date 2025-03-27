@@ -12,7 +12,7 @@ const initialState = {
 // Async thunk to fetch Reddit data based on category
 export const fetchRedditData = createAsyncThunk(
   'reddit/fetchRedditData',
-  async (category) => {
+  async (category = 'popular') => {
     try {
       const response = await fetch(
         `https://www.reddit.com/r/${category}.json?limit=10`

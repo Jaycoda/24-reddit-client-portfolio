@@ -44,17 +44,11 @@ export const RedditPosts = () => {
 
   useEffect(() => {
     //fetch the Reddit data when the component mounts
+
     if (status === 'idle') {
-      dispatch(fetchRedditData('popular'));
+      dispatch(fetchRedditData());
     }
   }, [status, dispatch]);
-
-  // Conditional logging to avoid logging empty arrays
-  useEffect(() => {
-    if (posts.length > 0) {
-      console.log(posts); // Log only when posts contain data
-    }
-  }, [posts]);
 
   // Filter the posts based on the search term
   const filteredPosts = posts.filter((post) =>

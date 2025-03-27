@@ -9,6 +9,7 @@ function App() {
     <BrowserRouter future={{ v7_relativeSplatPath: true }}>
       <div className='App'>
         <Header />
+
         <Routes>
           <Route path='/' element={<Main />} />
           <Route path='/post/:postId' element={<RedditPostDetail />} />
