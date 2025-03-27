@@ -31,15 +31,15 @@ describe('Reddit cline e2e test', () => {
       });
   });
 
-  it('should filter posts by category using the subreddit field (case-insensitive)', () => {
+  it('should filter posts by category using the subreddit field (case-insensitive)', async () => {
     const category = 'CSS';
 
     // Click on the css category
 
-    cy.contains(new RegExp(`^${category}$`, 'i')).click();
-    cy.pause();
+    await cy.contains(new RegExp(`^${category}$`, 'i')).click();
+    // cy.pause();
     // Ensure the posts are filtered by subreddit (case-insensitive)
-    cy.get('.post').each(($el) => {
+    await cy.get('.post').each(($el) => {
       // Wrap the element and check the subreddit field
       cy.wrap($el)
         .find('p') // Find all <p> tags within the post

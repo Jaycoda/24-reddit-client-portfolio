@@ -9,23 +9,29 @@
   background-color: #282c34;
   padding: 20px;
   color: white;
+  min-height: 80px; /* Reserve space */
+  flex-wrap: wrap; /* Allows content to wrap on small screens */
 }
 
 .logo {
-  font-size: 28px;
+  font-size: 24px; /* Smaller font size for smaller screens */
+
   font-weight: bold;
 }
 
 form {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  margin: 10px 0;
+  flex-wrap: wrap; /* Adjust layout for small screens */
 }
 
 input {
   padding: 10px;
   font-size: 16px;
-  width: 300px;
+
+  max-width: 400px; /* Maximum width constraint */
+
   border: 1px solid #ccc;
   border-radius: 4px 0 0 4px;
   outline: none;
@@ -45,6 +51,7 @@ input {
 .subreddits {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap; /* Adjust layout for small screens */
 }
 
 .subreddit {
@@ -80,12 +87,16 @@ input {
   padding: 10px;
   border: 2px solid #ccc;
   border-radius: 4px;
-  min-width: 800px;
+  width: 100%; /* Full width on smaller screens */
+  max-width: 800px; /* Maximum width constraint */
 }
 
 .post img,
 .main img {
-  max-width: 50%;
+  width: 100%; /* Full width on smaller screens */
+  max-width: 300px; /* Maximum width constraint */
+  height: auto; /* Maintain aspect ratio */
+
   margin: 10px auto;
   border-radius: 10px;
   border: 1px solid #ccc;
@@ -95,9 +106,34 @@ input {
 .back-button {
   color: white;
   background-color: #3c00ff;
+  width: 100%; /* Full width on smaller screens */
+  max-width: 300px; /* Maximum width constraint */
   margin-top: 10px;
   padding: 10px 20px;
   border-radius: 4px;
   border: none;
   font-size: 16px;
+}
+
+.error-boundary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.error-boundary h1 {
+  color: red;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; /* Stack content vertically on small screens */
+    align-items: flex-start;
+  }
+
+  .subreddits {
+    justify-content: center; /* Center items on smaller screens */
+  }
 }

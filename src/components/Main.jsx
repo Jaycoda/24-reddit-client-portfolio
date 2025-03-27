@@ -1,10 +1,10 @@
-import React from "react";
-import { RedditPosts } from "./RedditPosts";
+import React from 'react';
+import { RedditPosts } from './RedditPosts';
 
-export const Main = () => {
+export default function Main() {
   return (
-    <div className="main">
+    <div className='main'>
       <RedditPosts />
     </div>
   );
-};
+}
