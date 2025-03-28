@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './store/store'; // Import the store
-const webSocket = new WebSocket('ws://your-websocket-url');
+const webSocket = new WebSocket('wss://your-websocket-url');
 
 webSocket.onopen = () => {
   console.log('WebSocket connection established.');
