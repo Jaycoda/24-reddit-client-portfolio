@@ -4,15 +4,6 @@ import './index.css';
 import App from './App';
 import { Provider } from 'react-redux';
 import { store } from './store/store'; // Import the store
-// const webSocket = new WebSocket('wss://your-websocket-url');
-
-// webSocket.onopen = () => {
-//   console.log('WebSocket connection established.');
-// };
-
-// window.addEventListener('pagehide', () => {
-//   webSocket.close();
-// });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
