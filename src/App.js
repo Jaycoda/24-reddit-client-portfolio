@@ -12,7 +12,9 @@ const Main = lazy(() => import('./components/Main'));
 function App() {
   return (
     <ErrorBoundary>
-      <BrowserRouter future={{ v7_relativeSplatPath: true }}>
+      <BrowserRouter
+        basename='/24-reddit-client-portfolio'
+        future={{ v7_relativeSplatPath: true }}>
         <div className='App'>
           <Header />
 
